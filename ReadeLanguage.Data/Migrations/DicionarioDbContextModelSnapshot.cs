@@ -38,8 +38,7 @@ namespace ReadeLanguage.Data.Migrations
 
                     b.Property<string>("PalavraPt")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("varchar(200)");
 
                     b.HasKey("Id");
 
@@ -56,8 +55,7 @@ namespace ReadeLanguage.Data.Migrations
 
                     b.Property<string>("PalavraFr")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("varchar(200)");
 
                     b.HasKey("Id");
 
@@ -74,8 +72,7 @@ namespace ReadeLanguage.Data.Migrations
 
                     b.Property<string>("PalavraEn")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("varchar(200)");
 
                     b.HasKey("Id");
 

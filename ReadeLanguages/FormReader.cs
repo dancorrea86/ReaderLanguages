@@ -1,3 +1,4 @@
+using ReadeLanguages.Palavras;
 using System.Text.RegularExpressions;
 
 namespace ReadeLanguages
@@ -88,6 +89,11 @@ namespace ReadeLanguages
             }
         }
 
+        public void SalvarPalavraDb()
+        {
+            
+        }
+
         private void toolStripNovo_Click(object sender, EventArgs e)
         {
             ChamaSalvarArquivo();
@@ -102,8 +108,16 @@ namespace ReadeLanguages
             rtxtLeitor.Focus();
         }
 
+        public void MostrarPalavra(string palavra)
+        {
+            var m = new FormPalavra(palavra);
+            m.ShowDialog();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+
+            
             ProcurarPalavra();
 
             //string textoLeitura = LimpezaTexto(rtxtLeitor.Text);
@@ -197,5 +211,13 @@ namespace ReadeLanguages
                 }
             }
         }
+
+        private void rtxtLeitor_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            MostrarPalavra(rtxtLeitor.SelectedText);
+        }
+
+
     }
 }

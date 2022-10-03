@@ -87,6 +87,7 @@
             this.rtxtLeitor.Size = new System.Drawing.Size(799, 343);
             this.rtxtLeitor.TabIndex = 0;
             this.rtxtLeitor.Text = resources.GetString("rtxtLeitor.Text");
+            this.rtxtLeitor.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.rtxtLeitor_MouseDoubleClick);
             // 
             // menuStrip1
             // 

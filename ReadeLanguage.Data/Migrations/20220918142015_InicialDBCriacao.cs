@@ -14,9 +14,9 @@ namespace ReadeLanguage.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PalavraPt = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    IdTraducaoFr = table.Column<int>(type: "int", nullable: false),
-                    IdTraducaoEn = table.Column<int>(type: "int", nullable: false)
+                    PalavraPt = table.Column<string>(type: "varchar(200)", nullable: false),
+                    IdTraducaoFr = table.Column<int>(type: "int", nullable: true),
+                    IdTraducaoEn = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,7 +29,7 @@ namespace ReadeLanguage.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PalavraFr = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    PalavraFr = table.Column<string>(type: "varchar(200)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +42,7 @@ namespace ReadeLanguage.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PalavraEn = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    PalavraEn = table.Column<string>(type: "varchar(200)", nullable: false)
                 },
                 constraints: table =>
                 {
