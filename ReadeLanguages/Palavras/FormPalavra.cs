@@ -35,20 +35,23 @@ namespace ReadeLanguages.Palavras
         {
             using (var contexto = new DicionarioDbContext())
             {
+                var idPalavraFr = 1;
 
                 if (contexto.PalavrasFrances.Where(s => s.PalavraFr == this.palavra).FirstOrDefault() == null)
                 {
-                    var palavra = new PalavraFrances();
-                    palavra.PalavraFr = this.palavra;
+                    var palavraFr = new PalavraFrances();
+                    palavraFr.PalavraFr = this.palavra;
 
-                    contexto.PalavrasFrances.Add(palavra);
-                    contexto.SaveChanges();
+                    contexto.PalavrasFrances.Add(palavraFr);
+                    var result = contexto.SaveChanges();
+                    idPalavraFr = palavraFr.Id;
                 }
 
                 if (contexto.Palavras.Where(s => s.PalavraPt == this.palavra).FirstOrDefault() == null)
                 {
                     var palavra = new Palavra();
                     palavra.PalavraPt = txtTraducao.Text;
+                    palavra.IdTraducaoFr = idPalavraFr;
 
                     contexto.Palavras.Add(palavra);
                     contexto.SaveChanges();
@@ -56,7 +59,7 @@ namespace ReadeLanguages.Palavras
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             SalvarPalavraDb();
             Close();

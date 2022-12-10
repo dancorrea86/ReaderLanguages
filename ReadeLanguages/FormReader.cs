@@ -1,3 +1,4 @@
+using ReadeLanguage.Data;
 using ReadeLanguages.Palavras;
 using System.Text.RegularExpressions;
 
@@ -145,7 +146,7 @@ namespace ReadeLanguages
 
         public void Form1_Load(object sender, EventArgs e)
         {
-            load();
+            Load();
         }
 
         public void ProcurarPalavra()
@@ -175,9 +176,14 @@ namespace ReadeLanguages
 
         }
 
-        public void load()
+        public void Load()
         {
-            rtxtLeitor.Font = new Font("Consolas", 18f, FontStyle.Bold);
+            using (var contexto = new DicionarioDbContext())
+            {
+
+            }
+
+                rtxtLeitor.Font = new Font("Consolas", 18f, FontStyle.Bold);
             rtxtLeitor.BackColor = Color.AliceBlue;
             string[] words =
             {
@@ -214,10 +220,22 @@ namespace ReadeLanguages
 
         private void rtxtLeitor_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            using (var contexto = new DicionarioDbContext())
+            {
+                var palavraExiste = contexto.PalavrasFrances.Where(x => x.PalavraFr == rtxtLeitor.SelectedText).Any();
 
-            MostrarPalavra(rtxtLeitor.SelectedText);
+                if (palavraExiste)
+                {
+                    var palavraFr = contexto.PalavrasFrances.Where(x => x.PalavraFr == rtxtLeitor.SelectedText).First();
+                    var palavraPt = contexto.Palavras.Where(x => x.IdTraducaoFr == palavraFr.Id).First();
+
+                    MessageBox.Show(palavraPt.PalavraPt, palavraFr.PalavraFr);
+                }
+                else
+                {
+                    MostrarPalavra(rtxtLeitor.SelectedText);
+                }
+            }   
         }
-
-
     }
 }
